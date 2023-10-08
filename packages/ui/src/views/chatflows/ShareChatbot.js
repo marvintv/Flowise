@@ -26,7 +26,7 @@ import { baseURL } from 'store/constant'
 const defaultConfig = {
     backgroundColor: '#ffffff',
     fontSize: 16,
-    poweredByTextColor: '#303235',
+    poweredByTextColor: 'transparent',
     botMessage: {
         backgroundColor: '#f7f8ff',
         textColor: '#303235'
