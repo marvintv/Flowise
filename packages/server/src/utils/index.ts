@@ -477,6 +477,7 @@ export const replaceInputsWithConfig = (flowNodeData: INodeData, overrideConfig:
  */
 export const isStartNodeDependOnInput = (startingNodes: IReactFlowNode[], nodes: IReactFlowNode[]): boolean => {
     for (const node of startingNodes) {
+        if (node.data.category === 'Cache') return true
         for (const inputName in node.data.inputs) {
             const inputVariables = getInputVariables(node.data.inputs[inputName])
             if (inputVariables.length > 0) return true
@@ -771,8 +772,8 @@ export const findAvailableConfigs = (reactFlowNodes: IReactFlowNode[], component
  */
 export const isFlowValidForStream = (reactFlowNodes: IReactFlowNode[], endingNodeData: INodeData) => {
     const streamAvailableLLMs = {
-        'Chat Models': ['azureChatOpenAI', 'chatOpenAI', 'chatAnthropic'],
-        LLMs: ['azureOpenAI', 'openAI']
+        'Chat Models': ['azureChatOpenAI', 'chatOpenAI', 'chatAnthropic', 'chatOllama'],
+        LLMs: ['azureOpenAI', 'openAI', 'ollama']
     }
 
     let isChatOrLLMsExist = false
